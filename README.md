@@ -62,13 +62,6 @@ Forked and Debugged By Sherif Rashwan
 
 _Artwork by [Mike Sgier](http://msgierillustration.com)_
 
-[![Travis Build Status](https://travis-ci.com/rwaldron/johnny-five.svg?branch=main)](https://travis-ci.com/rwaldron/johnny-five)
-[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/hmke71k7uemtnami/branch/main?svg=true)](https://ci.appveyor.com/project/rwaldron/johnny-five)
-[![Coverage Status](https://coveralls.io/repos/github/rwaldron/johnny-five/badge.svg?branch=main)](https://coveralls.io/github/rwaldron/johnny-five?branch=main)
-[![Install Size](https://packagephobia.now.sh/badge?p=johnny-five)](https://packagephobia.now.sh/result?p=johnny-five)
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/rwaldron/johnny-five)
-
-
 
 **Johnny-Five is an Open Source, Firmata Protocol based, IoT and Robotics programming framework, developed by the [Nodebots](https://twitter.com/nodebots) Community. Johnny-Five programs can be written for Arduino (all models), Electric Imp, Beagle Bone, Intel Galileo & Edison, Linino One, Pinoccio, pcDuino3, Raspberry Pi, Particle/Spark Core & Photon, Tessel 2, TI Launchpad and more!**
 
