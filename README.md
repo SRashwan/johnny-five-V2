@@ -1,4 +1,4 @@
-Forked and Corrected By Sherif Rashwan
+Forked and Debugged By Sherif Rashwan
 ---
 ![](https://github.com/rwaldron/johnny-five/raw/main/assets/sgier-johnny-five.png)
 
