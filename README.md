@@ -100,8 +100,8 @@ Johnny-Five does not attempt to provide "all the things", but instead focuses on
 The ubiquitous "Hello World" program of the microcontroller and SoC world is "blink an LED". The following code demonstrates how this is done using the Johnny-Five framework.
 
 ```javascript
-const { Board, Led } = require("johnny-five");
-const board = new Board();
+const five = require("johnny-five");
+const board = new five.Board({port: 'COM4'});
 
 board.on("ready", () => {
   // Create an Led on pin 13
