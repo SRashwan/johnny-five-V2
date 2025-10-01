@@ -1,3 +1,5 @@
+Forked and Corrected By Sherif Rashwan
+---
 ![](https://github.com/rwaldron/johnny-five/raw/main/assets/sgier-johnny-five.png)
 
 # Johnny-Five
@@ -607,5 +609,7 @@ by maintaining the existing coding style. Add unit tests for any new or changed 
 ## License
 Copyright (c) 2012, 2013, 2014 Rick Waldron <waldron.rick@gmail.com>
 Licensed under the MIT license.
-Copyright (c) 2014, 2015 The Johnny-Five Contributors
+Copyright (c) 2012, 2025 Sherif Rashwan <sherif.moh.rashwan@gmail.com>
+Licensed under the MIT license.
+Copyright (c) 2014, 2015, 2025 The Johnny-Five Contributors
 Licensed under the MIT license.
