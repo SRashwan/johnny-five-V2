@@ -4,7 +4,7 @@ Forked and Debugged By Sherif Rashwan
 ---
 
 # Johnny-Five
-### The JavaScript Robotics Programming Framework
+### The NodeJS Robotics Programming Framework
 
 <!-- 
 
