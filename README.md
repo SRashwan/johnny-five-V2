@@ -1,7 +1,7 @@
 Forked and Debugged By Sherif Rashwan
+---
 ![](https://raw.githubusercontent.com/SRashwan/johnny-five-V2/refs/heads/main/johnny-five-v2-1.PNG)
 ---
-![](https://github.com/rwaldron/johnny-five/raw/main/assets/sgier-johnny-five.png)
 
 # Johnny-Five
 ### The JavaScript Robotics Programming Framework
