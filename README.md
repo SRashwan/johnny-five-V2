@@ -106,6 +106,165 @@ board.on("ready", () => {
 
 > Note: Node will crash if you try to run johnny-five in the node REPL, but board instances will create their own contextual REPL. Put your script in a file.
 
+## Advanced Example
+
+```javascript
+const five = require("johnny-five");
+const board = new five.Board({port: 'COM4'});
+
+// Pin definitions
+const rowPins = [2, 3, 4, 5];     // ROW 0 to ROW 3
+const colPins = [6, 7, 8, 9];     // COL 0 to COL 3
+
+var rows, cols = [];
+
+// Pattern definitions
+const patterns = {
+  allOn: [
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1]
+  ],
+  allOff: [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+  ],
+  smiley: [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [0, 1, 1, 0]
+  ],
+  heart: [
+    [0, 1, 1, 0],
+    [1, 0, 1, 0],
+    [1, 0, 0, 1],
+    [0, 1, 1, 0]
+  ],
+  cross: [
+    [1, 0, 0, 1],
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [1, 0, 0, 1]
+  ],
+  arrowUp: [
+    [0, 0, 1, 0],
+    [0, 1, 1, 1],
+    [1, 0, 1, 0],
+    [0, 0, 1, 0]
+  ],
+  checker: [
+    [1, 0, 1, 0],
+    [0, 1, 0, 1],
+    [1, 0, 1, 0],
+    [0, 1, 0, 1]
+  ]
+};
+
+let scanDelay = 50;  // Default scan delay in ms per row
+
+board.on("ready", () => {
+
+  // Initialize rows and columns as LEDs
+
+  rows = rowPins.map(pin => new five.Relay(pin));
+  cols = colPins.map(pin => new five.Relay(pin));
+
+  //clearRelays();
+
+  console.log("4x4 Relay Matrix Ready (Johnny-Five)");
+  console.log("Available patterns: smiley | heart | cross | arrowup | checker | allon | alloff");
+  console.log("Commands:");
+  console.log("  patternName - display a pattern continuously");
+  console.log("  delayXXX - set scan delay (e.g. delay100)");
+  console.log("  exit - quit program");
+
+  startCLI();
+});
+
+// Clear all relays
+function clearRelays() {
+  rows.forEach(r => r.close());
+  cols.forEach(c => c.close());
+}
+
+// Display a given pattern once (for continuous loop, handled in CLI)
+function displayPattern(pattern) {
+  for (let r = 0; r < 4; r++) {
+    rows[r].close();  // Activate current row
+
+    for (let c = 0; c < 4; c++) {
+      if (pattern[r][c] === 1) {
+        cols[c].close();
+      } else {
+        cols[c].open();
+      }
+    }
+
+    delay(scanDelay);  // Custom delay function below
+
+    rows[r].open();  // Deactivate row
+
+    cols.forEach(col => col.open());  // Turn off all columns
+  }
+}
+
+// Simple blocking delay
+function delay(ms) {
+  const start = Date.now();
+  while (Date.now() < start + ms);
+}
+
+// Command-line interface
+function startCLI() {
+  const readline = require("readline").createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  readline.on("line", cmd => {
+    cmd = cmd.trim().toLowerCase();
+
+    if (cmd === "exit") {
+      readline.open();
+      clearRelays();
+      board.reset();
+      console.log("Goodbye!");
+      process.exit();
+    } else if (cmd.startsWith("delay")) {
+      const value = parseInt(cmd.replace("delay", ""));
+      if (!isNaN(value) && value >= 0) {
+        scanDelay = value;
+        console.log(`Scan delay set to ${scanDelay}ms`);
+      } else {
+        console.log("Invalid delay value.");
+      }
+    } else if (patterns[cmd]) {
+      console.log(`Displaying pattern: ${cmd}`);
+      console.log("Press CTRL+C to stop or type 'exit' to quit.");
+
+      // Infinite loop of pattern
+      const interval = setInterval(() => {
+        displayPattern(patterns[cmd]);
+      }, 0);
+
+      // Allow user to break out by typing again
+      readline.pause();
+      readline.question("", () => {
+        clearInterval(interval);
+        readline.resume();
+      });
+    } else {
+      console.log("Unknown command. Available:");
+      console.log("  smiley | heart | cross | arrowup | checker | allon | alloff");
+      console.log("  delayXXX | exit");
+    }
+  });
+}
+```
 
 ## Supported Hardware
 
