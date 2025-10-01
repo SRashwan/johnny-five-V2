@@ -155,19 +155,10 @@ For non-Arduino projects, each IO Plugin's repo will provide its own platform sp
 #### Source Code:
 
 ``` bash
-git clone git://github.com/rwaldron/johnny-five.git && cd johnny-five
+git clone git://github.com/SRashwan/johnny-five-V2.git && cd johnny-five-V2
 
 npm install
 ```
-
-#### npm package:
-
-Install the module with:
-
-```bash
-npm install johnny-five
-```
-
 
 ## Example Programs
 
