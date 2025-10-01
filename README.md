@@ -60,9 +60,6 @@ Forked and Debugged By Sherif Rashwan
 -->
 
 
-_Artwork by [Mike Sgier](http://msgierillustration.com)_
-
-
 **Johnny-Five is an Open Source, Firmata Protocol based, IoT and Robotics programming framework, developed by the [Nodebots](https://twitter.com/nodebots) Community. Johnny-Five programs can be written for Arduino (all models), Electric Imp, Beagle Bone, Intel Galileo & Edison, Linino One, Pinoccio, pcDuino3, Raspberry Pi, Particle/Spark Core & Photon, Tessel 2, TI Launchpad and more!**
 
 Johnny-Five has grown from a passion project into a tool for inspiring learning and creativity for people of all ages, backgrounds, and from all across the world.
